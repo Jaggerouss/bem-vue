@@ -1,0 +1,38 @@
+$namespace: "ja" !default;
+$block-sel: "-" !default;
+$elem-sel: "__" !default;
+$mod-sel: "--" !default;
+
+@mixin bfc {
+    height: 100%;
+    overflow: hidden;
+}
+
+@mixin flex {
+    display: flex;
+}
+
+@mixin b($block) {
+    $B: $namespace + $block-sel + $block;
+    .#{$B} {
+        @content;
+    }
+}
+
+@mixin e($el) {
+    $selector: &;
+    @at-root {
+        #{$selector + $elem-sel + $el} {
+            @content;
+        }
+    }
+}
+
+@mixin m($el) {
+    $selector: &;
+    @at-root {
+        #{$selector + $mod-sel + $el} {
+            @content;
+        }
+    }
+}
